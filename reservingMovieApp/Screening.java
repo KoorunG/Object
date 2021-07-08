@@ -17,7 +17,7 @@ public class Screening {
         return whenScreened;
     }
 
-    public boolean isSequenced(int sequence){
+    public boolean isSequence(int sequence){
         return this.sequence == sequence;
     }
 

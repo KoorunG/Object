@@ -27,4 +27,17 @@ public class Money {
         return new Money(this.amount.subtract(amount.amount));
     }
 
+    public Money times(double percent){
+        return new Money(this.amount.multiply(
+            BigDecimal.valueOf(percent)));
+    }
+
+    public boolean isLessThan(Money other){
+        return amount.compareTo(other.amount) < 0;
+    }
+
+    public boolean isGreaterThanOrEqual(Money other){
+        return amount.compareTo(other.amount) >= 0;
+    }
+
 }
