@@ -8,6 +8,10 @@ public class Movie {
     private Money fee;
     private DiscountPolicy discountPolicy;
 
+    public void changeDiscountPolicy(DiscountPolicy discountPolicy){
+        this.discountPolicy = discountPolicy;
+    }                                                                   // discountPolicy를 간단하게 바꿀수 있는 메소드 (상속보다 합성이 훨씬 유연함을 알 수 있다)
+
     public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
         this.title = title;
         this.runningTime = runningTime;
