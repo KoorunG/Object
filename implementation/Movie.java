@@ -2,24 +2,24 @@ package implementation;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Arrays;
 
 public class Movie {
 
     // 요금을 계산하기 위해 필요한 정보 수집
 
-    private MovieType movieType; // enum
     private Money fee;
-    private double discountPercent;
-    private Money discountAmount;
     private List<DiscountCondition> discountConditions;
 
     private String title;
     private Duration runningTime;
+    private DiscountPolicy discountPolicy;
 
-    public enum MovieType {
-        AMOUNT_DISCOUNT, // 금액 할인 정책
-        PERCENT_DISCOUNT, // 비율 할인 정책
-        NONE_DISCOUNT // 미적용
+    public Movie(String title, Duration runningTime, Money fee, DiscountCondition ... discountConditions) {
+        this.fee = fee;
+        this.discountConditions = Arrays.asList(discountConditions);
+        this.title = title;
+        this.runningTime = runningTime;
     }
 
     public Money calculateMovieFee(Screening screening) {
@@ -27,7 +27,7 @@ public class Movie {
         // (Money 반환)
 
         if (isDiscountable(screening)) { // 만일 Discountable 하다면,
-            return fee.minus(calculateDiscountAmount()); // 할인요금이 적용된 fee를 반환하고
+            return fee.minus(discountPolicy.calculateDiscountAmount()); // 할인요금이 적용된 fee를 반환하고
         }
         return fee; // 아니면 그냥 fee를 반환한다
     }
@@ -41,29 +41,15 @@ public class Movie {
         // 교재에서는 스트림으로 반환했는데 일단 두고보자...
     }
 
-    private Money calculateDiscountAmount() { // 역시 calculateMovieFee()에서만 쓰이기 때문에 private 처리함
-        switch (movieType) { // MovieType 케이스별로 각각의 요금을 계산하는 메소드 호출
-            case AMOUNT_DISCOUNT:
-                return calculateAmountDiscountAmount();
-            case PERCENT_DISCOUNT:
-                return calculatePercentDiscountAmount();
-            case NONE_DISCOUNT:
-                return calculateNoneDiscountAmount();
-        }
-
-        throw new IllegalArgumentException(); // 형식에 안맞는 경우 예외처리
+    public Money getFee(){
+        return fee;
     }
 
-    private Money calculateAmountDiscountAmount() {
-        return discountAmount;
+    public void changeDiscountPolicy(DiscountPolicy discountPolicy){
+        this.discountPolicy = discountPolicy;
     }
 
-    private Money calculatePercentDiscountAmount() {
-        return fee.times(discountPercent);
-    }
-
-    private Money calculateNoneDiscountAmount() {
-        return Money.ZERO;
-    }
+    // protected abstract Money calculateDiscountAmount(); 
+    //         // Movie에 대한 추상메소드를 구현하며, Money를 반환하는 메소드를 가지고 있는 클래스 3개를 생성...
 
 }
