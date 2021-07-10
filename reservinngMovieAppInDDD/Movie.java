@@ -1,7 +1,6 @@
 package reservinngMovieAppInDDD;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -77,25 +76,6 @@ public class Movie {
             throw new IllegalArgumentException();
         }
         return fee;
-    }
-
-    public boolean isDiscountable(LocalDateTime whenScreened, int sequence){    
-                                        // Movie의 isDiscountable(LocalDateTime whenScreened, int sequence) 메소드를 새로 정의함
-        for(DiscountCondition condition : discountConditions){  // discountConditions를 돌리는(iterate) for-each문
-            if(condition.getType() == DiscountConditionType.PERIOD){    // 1. condition의 type이 '기간' 일때
-                if(condition.isDiscountable(whenScreened.getDayOfWeek(),whenScreened.toLocalTime())){
-                                        // DiscountCondition의 isDiscountable(DayOfWeek dayOfWeek, LocalTime time) 메소드를 불러옴
-                    return true;
-                }
-            } else {
-                if(condition.isDiscountable(sequence)){ // 2. condition의 type이 '기간'이 아닐때 -> '시퀀스' 일때
-                                        // DiscountCondition의 isDiscountable(int sequence) 메소드를 불러옴
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 }
 
