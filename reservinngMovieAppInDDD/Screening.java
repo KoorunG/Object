@@ -32,28 +32,28 @@ public class Screening {
         return movie.calculateNoneDiscountedFee().times(audienceCount);     //할인이 불가능한 경우 (default)
     }
 
-    // public Movie getMovie() {
-    //     return movie;
-    // }
+    public Movie getMovie() {
+        return movie;
+    }
 
-    // public void setMovie(Movie movie) {
-    //     this.movie = movie;
-    // }
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
 
-    // public int getSequence() {
-    //     return sequence;
-    // }
+    public int getSequence() {
+        return sequence;
+    }
 
-    // public void setSequence(int sequence) {
-    //     this.sequence = sequence;
-    // }
+    public void setSequence(int sequence) {
+        this.sequence = sequence;
+    }
 
-    // public LocalDateTime getWhenScreened() {
-    //     return whenScreened;
-    // }
+    public LocalDateTime getWhenScreened() {
+        return whenScreened;
+    }
 
-    // public void setWhenScreened(LocalDateTime whenScreened) {
-    //     this.whenScreened = whenScreened;
-    // }
+    public void setWhenScreened(LocalDateTime whenScreened) {
+        this.whenScreened = whenScreened;
+    }
 
 }

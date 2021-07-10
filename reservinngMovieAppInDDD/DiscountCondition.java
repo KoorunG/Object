@@ -30,33 +30,33 @@ public class DiscountCondition {
         }
         return this.sequence == sequence;           // 아니라면, 조건에 맞는지에 관한 boolean 반환
     }
-    // public void setType(DiscountConditionType type) {
-    //     this.type = type;
-    // }
-    // public int getSequence() {
-    //     return sequence;
-    // }
-    // public void setSequence(int sequence) {
-    //     this.sequence = sequence;
-    // }
-    // public DayOfWeek getDayOfWeek() {
-    //     return dayOfWeek;
-    // }
-    // public void setDayOfWeek(DayOfWeek dayOfWeek) {
-    //     this.dayOfWeek = dayOfWeek;
-    // }
-    // public LocalTime getStartTime() {
-    //     return startTime;
-    // }
-    // public void setStartTime(LocalTime startTime) {
-    //     this.startTime = startTime;
-    // }
-    // public LocalTime getEndTime() {
-    //     return endTime;
-    // }
-    // public void setEndTime(LocalTime endTime) {
-    //     this.endTime = endTime;
-    // }
+    public void setType(DiscountConditionType type) {
+        this.type = type;
+    }
+    public int getSequence() {
+        return sequence;
+    }
+    public void setSequence(int sequence) {
+        this.sequence = sequence;
+    }
+    public DayOfWeek getDayOfWeek() {
+        return dayOfWeek;
+    }
+    public void setDayOfWeek(DayOfWeek dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
+    }
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
 
 
 }
