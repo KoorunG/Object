@@ -56,27 +56,6 @@ public class Movie {
     public void setDiscountPercent(double discountPercent) {
         this.discountPercent = discountPercent;
     }
-
-    public Money calculateAmountDiscountedFee(){                // 할인된 요금의 총액을 계산하는 메소드
-        if(movieType != MovieType.AMOUNT_DISCOUNT){
-            throw new IllegalArgumentException();
-        }
-        return fee.minus(discountAmount);                       // 조건에 맞는다면 할인을 적용한 요금을 반환    
-    }
-
-    public Money calculatePercentDiscountedFee(){
-        if(movieType != MovieType.PERCENT_DISCOUNT){
-            throw new IllegalArgumentException();
-        }
-        return fee.minus(fee.times(discountPercent));
-    }
-
-    public Money calculateNoneDiscountedFee(){
-        if(movieType != MovieType.NONE_DISCOUNT){
-            throw new IllegalArgumentException();
-        }
-        return fee;
-    }
 }
 
 
