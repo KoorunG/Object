@@ -15,8 +15,11 @@ public class Test {
                 RecurringSchedule schedule = new RecurringSchedule("회의", DayOfWeek.WEDNESDAY, LocalTime.of(10, 30), Duration.ofMinutes(30));
                 // 수요일 10시 30분마다 30분간 열리는 회의 (일상적인 일)
         
-                assert meeting.isSatisfied(schedule) == true;   
-                
+                assert meeting.isSatisfied(schedule) == true;       // 쿼리
+                if(!meeting.isSatisfied(schedule)){                 // 쿼리를 만족하지 않는다면
+                    meeting.reschedule(schedule);                   // reschedule 명령메소드를 통해 스케쥴 변경
+                }   
+
                 // assert expression1 : 인자로 boolean으로 평가되는 값을 받아서 참이면 지나가고 거짓이면 AssertionError 예외가 발생
         
     }
