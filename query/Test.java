@@ -21,6 +21,6 @@ public class Test {
                 }   
 
                 // assert expression1 : 인자로 boolean으로 평가되는 값을 받아서 참이면 지나가고 거짓이면 AssertionError 예외가 발생
-        
+
     }
 }
