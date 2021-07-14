@@ -1,47 +1,42 @@
 package phonebill;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
-public class NightlyDiscountPhone {
+public class NightlyDiscountPhone extends Phone {
     private static final int LATE_NIGHT_HOUR = 22;
     private Money nightlyAmount;
-    private Money regularAmount;
-    private Duration seconds;
-    private List<Call> calls = new ArrayList<>();
+    // private Money regularAmount;
+    // private Duration seconds;
+    // private List<Call> calls = new ArrayList<>();
+    // private double taxRate;
 
     
     public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds) {
+        super(regularAmount,seconds);
         this.nightlyAmount = nightlyAmount;
-        this.regularAmount = regularAmount;
-        this.seconds = seconds;
     }
 
-    public void call(Call call){
-        calls.add(call);
-    }
+    // public void call(Call call){
+    //     calls.add(call);
+    // }
 
-    public List<Call> getCalls(){
-        return calls;
-    }
+    // public List<Call> getCalls(){
+    //     return calls;
+    // }
 
-    public Duration getSeconds(){
-        return seconds;
-    }
+    // public Duration getSeconds(){
+    //     return seconds;
+    // }
 
     public Money calculateFee(){
-        Money result = Money.ZERO;
-        for(Call call : calls){
-
+        Money result = super.calculateFee();
+        Money nightlyFee = Money.ZERO;
+        for(Call call : getCalls()){
             if(call.getFrom().getHour() >= LATE_NIGHT_HOUR){
-                result = result.plus(nightlyAmount.times(call.getDuration().getSeconds()/seconds.getSeconds()));
-            } else {
-                result = result.plus(regularAmount.times(call.getDuration().getSeconds()/seconds.getSeconds()));
-            }
-           
+               nightlyFee = nightlyFee.plus(getAmount().minus(nightlyAmount).times(call.getDuration().getSeconds()/getSeconds().getSeconds()));
+            } 
         }
-        return result;
+        return result.minus(nightlyFee);
     }
 
 
