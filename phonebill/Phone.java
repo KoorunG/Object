@@ -1,43 +1,20 @@
 package phonebill;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Phone {
-    private double taxRate;
-    private Money amount;
-    private Duration seconds;
-    private List<Call> calls = new ArrayList<>();
-
-    public Phone(Money amount, Duration seconds) {
-        this.amount = amount;
-        this.seconds = seconds;
-    }
-
-    public void call(Call call){
-        calls.add(call);
-    }
-
-    public List<Call> getCalls(){
-        return calls;
-    }
-
-    public Money getAmount(){
-        return amount;
-    }
-
-    public Duration getSeconds(){
-        return seconds;
-    }
-
+public abstract class Phone {
+    
+    protected List<Call> calls = new ArrayList<>();
+    
     public Money calculateFee(){
         Money result = Money.ZERO;
         for(Call call : calls){
-            result = result.plus(amount.times(call.getDuration().getSeconds()/seconds.getSeconds()));
+            result = result.plus(calculateCallFee(call));
         }
-        return result.plus(result.times(taxRate));
+        return result;
     }
 
-
+    protected abstract Money calculateCallFee(Call call);
+    
 }
