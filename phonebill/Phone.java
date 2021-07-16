@@ -1,6 +1,7 @@
 package phonebill;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Phone {
@@ -12,12 +13,12 @@ public class Phone {
         this.ratePolicy = ratePolicy;
     }
 
+    public List<Call> getCalls() {
+        return Collections.unmodifiableList(calls); // 지정된 목록이 수정 불가능함을 나타내는 Collections.unmodifiableList()
+    }
     public Money calculateFee(){
         return ratePolicy.calculateFee(this);
     }
 
-    public List<Call> getCalls() {
-        return calls;
-    }
     
 }
