@@ -20,5 +20,8 @@ public class Phone {
         return ratePolicy.calculateFee(this);
     }
 
+    public void call(Call call) {       // 임시로 만들어두자...
+    }
+
     
 }
