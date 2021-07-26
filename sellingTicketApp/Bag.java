@@ -4,12 +4,12 @@ public class Bag {
 
     public Bag(long amount){
         this(null,amount);
-    }
+    }   // 현금만 보관
 
     public Bag(Invitation invitation, long amount){
         this.invitation = invitation;
         this.amount = amount;
-    }
+    }   // 초대장과 현금 모두 보관
     
     private Long amount;
     private Invitation invitation;
@@ -44,4 +44,6 @@ public class Bag {
            return ticket.getFee();                                      
             }
     }
+
+    
 }

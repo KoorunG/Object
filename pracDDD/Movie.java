@@ -1,19 +1,24 @@
-package reservinngMovieAppInDDD;
+package pracDDD;
 
 import java.time.Duration;
-import java.util.Collections;
 import java.util.List;
 
 public class Movie {
-    
-    public String title;
+    // 1. 데이터 세팅
+
+    // 공통점
+    private String title;
     private Duration runningTime;
     private Money fee;
-    private List<DiscountCondition> discountConditions;
-    private MovieType movieType;
-    private Money discountAmount;
-    private double discountPercent;
     
+    // 차이점
+    private List<DiscountCondition> discountConditions; // 할인 조건을 List를 통해 받아옴
+    private MovieType movieType;    // discountPolicy를 MovieType의 형태로 받아옴
+    private Money discountAmount;   // 할인 총액을 직접 받아옴 -> Amount 조건에 쓰이는 변수
+    private double discountPercent; // 할인율도 받아옴 -> Percent 조건에 쓰이는 변수
+
+    // 2. 외부와 협력을 위해 접근자(GETTER), 수정자(SETTER) 추가
+
     public String getTitle() {
         return title;
     }
@@ -33,7 +38,7 @@ public class Movie {
         this.fee = fee;
     }
     public List<DiscountCondition> getDiscountConditions() {
-        return Collections.unmodifiableList(discountConditions);
+        return discountConditions;
     }
     public void setDiscountConditions(List<DiscountCondition> discountConditions) {
         this.discountConditions = discountConditions;
@@ -56,6 +61,8 @@ public class Movie {
     public void setDiscountPercent(double discountPercent) {
         this.discountPercent = discountPercent;
     }
+
+    
+
+    
 }
-
-

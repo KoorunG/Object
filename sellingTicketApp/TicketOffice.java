@@ -28,4 +28,26 @@ public class TicketOffice {
     public void sellTicketTo(Audience audience){
         plusAmount(audience.buy(getTicket()));   
     }
+
+    /* public void sellTo(Audience audience){
+        if(audience.getBag().hasInvitation()){
+                Ticket ticket = ticketOffice.getTicket();
+                audience.getBag().setTicket(ticket);
+            } else { 
+                Ticket ticket = ticketOffice.getTicket();
+                audience.getBag().minusAmount(ticket.getFee());
+                ticketOffice.plusAmount(ticket.getFee());
+                audience.getBag().setTicket(ticket);
+            }
+    } */
+
+    /* public void sellTicketTo(Audience audience){
+        if(audience.getBag().hasInvitation()){
+            Ticket ticket = getTicket();
+            audience.getBag().setTicket(ticket);
+        } else {
+            Ticket ticket = getTicket();
+            audience.getBag().minusAmount(ticket.getFee());
+            plusAmount(ticket.getFee());
+            audience.getBag().setTicket(ticket)*/
 }

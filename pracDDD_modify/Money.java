@@ -1,4 +1,4 @@
-package reservinngMovieAppInDDD;
+package pracDDD_modify;
 
 import java.math.BigDecimal;
 

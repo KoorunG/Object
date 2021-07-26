@@ -1,6 +1,6 @@
-package reservinngMovieAppInDDD;
+package pracDDD_modify;
 
-public enum MovieType{
+public enum MovieType {
     AMOUNT_DISCOUNT,
     PERCENT_DISCOUNT,
     NONE_DISCOUNT
